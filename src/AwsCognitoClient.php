@@ -327,7 +327,7 @@ class AwsCognitoClient
         } //End if
 
         try {
-            $this->client->adminCreateUser($payload);
+            $createUser = $this->client->adminCreateUser($payload);
         } catch (CognitoIdentityProviderException $e) {
             if ($e->getAwsErrorCode() === self::USERNAME_EXISTS) {
                 return false;
@@ -336,7 +336,7 @@ class AwsCognitoClient
             throw $e;
         }
 
-        return true;
+        return $createUser;
     } //Function ends
 
 
