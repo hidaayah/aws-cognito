@@ -45,8 +45,10 @@ return [
     |
     */
     'cognito_user_fields'   => [
-        'name' => 'first_name',
+        'given_name' => 'given_name',
+        'family_name' => 'family_name',
         'email' => 'email',
+        'phone_number' => 'phone_number',
     ],
 
     /*
@@ -81,7 +83,7 @@ return [
     | Token Store
     |--------------------------------------------------------------------------
     |
-    | This option controls the default store connection provider that gets used 
+    | This option controls the default store connection provider that gets used
     | while persisting the token. You can use the providers in the cache config.
     |
     */
@@ -92,14 +94,14 @@ return [
     | Cognito Challenge Status Names for Forced Access.
     |--------------------------------------------------------------------------
     |
-    | This option controls the package action based on the Challenge Status 
-    | received from the AWS Cognito Authentication. If the challenge status 
-    | is 'NEW_PASSWORD_CHALLENGE' and/or 'RESET_REQUIRED_PASSWORD', the 
+    | This option controls the package action based on the Challenge Status
+    | received from the AWS Cognito Authentication. If the challenge status
+    | is 'NEW_PASSWORD_CHALLENGE' and/or 'RESET_REQUIRED_PASSWORD', the
     | configuration that follows below will execute.
     |
     */
     'forced_challenge_names' => [
-        AwsCognitoClient::NEW_PASSWORD_CHALLENGE, 
+        AwsCognitoClient::NEW_PASSWORD_CHALLENGE,
         AwsCognitoClient::RESET_REQUIRED_PASSWORD
     ],
 
@@ -110,10 +112,10 @@ return [
     |
     | This setting controls the action, in case the AWS Cognito authentication
     | response includes the Challenge Names defined by 'forced_challenge_names'
-    | configuration in this file. The below flag, if set to 'true', will force 
-    | the web application user to be directed to certain route view/page. 
+    | configuration in this file. The below flag, if set to 'true', will force
+    | the web application user to be directed to certain route view/page.
     |
-    | In case the route name needs to be changed, you can set the below parameter 
+    | In case the route name needs to be changed, you can set the below parameter
     | and map it in web.php route page.
     |
     */
@@ -127,7 +129,7 @@ return [
     |
     | This setting controls the action, in case the AWS Cognito authentication
     | response includes the Challenge Names defined by 'forced_challenge_names'
-    | configuration in this file. The below flag, if set to 'true', will force 
+    | configuration in this file. The below flag, if set to 'true', will force
     | the user requesting API authentication by sharing the data required for
     | changing the password.
     |
@@ -139,7 +141,7 @@ return [
     | Force Auto Password Update based on Cognito Status in API Request (Token Guard)
     |--------------------------------------------------------------------------
     |
-    | This option enables the password to be auto updated into the AWS Cognito 
+    | This option enables the password to be auto updated into the AWS Cognito
     | User Pool. This feature will work only if the 'force_password_change_api'
     | is set to false.
     |
